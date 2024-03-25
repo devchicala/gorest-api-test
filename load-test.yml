@@ -1,0 +1,18 @@
+config:
+ target: 'https://gorest.co.in/public/v2/users'
+ phases:
+    - duration: 60 # Duration of the test in seconds
+      arrivalRate: 10 # New users arriving per second
+      thinkTime: 5 # Time in seconds to wait between requests
+
+scenarios:
+ - flow:
+    - get:
+        url: 'https://gorest.co.in/public/v2/users'
+    - get:
+        url: 'https://gorest.co.in/public/v2/users/1' # test fetching a specific user
+    - post:
+        url: 'https://gorest.co.in/public/v2/users'
+        json:
+          name: 'Test User'
+          email: 'testuser@example.com'
