@@ -46,5 +46,50 @@ const deleteUser = async (id) => {
   }
 };
 
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get("https://gorest.co.in/public/v2/posts");
+    console.log(response.data);
+    return response.data.data; // Extracting the 'data' property from the response
+  } catch (error) {
+    throw error;
+  }
+};
+const addPost = async (data) => {
+  try {
+    const response = await axios.post(
+      "https://gorest.co.in/public/v2/posts",
+      data
+    );
+    console.log({ response: response.data, context: "addPost" });
+    return response.data.data; // Extracting the 'data' property from the response
+  } catch (error) {
+    throw error;
+  }
+};
 
-module.exports = { fetchUsers };
+const updatePost = async (id, data) => {
+  try {
+    const response = await axios.put(
+      `https://gorest.co.in/public/v2/posts/${id}`,
+      data
+    );
+    return response.data.data; // Extracting the 'data' property from the response
+  } catch (error) {
+    throw error;
+  }
+};
+
+const deletePost = async (id) => {
+  try {
+    const response = await axios.delete(
+      `https://gorest.co.in/public/v2/posts/${id}`
+    );
+    return response.data; // No need to extract 'data' property as it doesn't return deleted data
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+module.exports = { fetchUsers, addUser, updateUser, deleteUser, fetchPosts, addPost, updatePost, deletePost };
