@@ -5,7 +5,7 @@ const { fetchUsers, addUser, updateUser, deleteUser } = require("./index");
 
 jest.mock("axios");
 
-describe("Users Cases", () => {
+describe("Users", () => {
 
   // Clear cash after tests
   afterEach(() => {
